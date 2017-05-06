@@ -29,9 +29,7 @@ class AuthorizationManager {
         }
 
         // Request authorization to read heart rate data.
-        print("before healthStore.requestAuthorization")
         healthStore.requestAuthorization(toShare: nil, read: [heartRateQuantityType, HKObjectType.workoutType()]) { (success, error) -> Void in
-            print("in healthStore.requestAuthorization")
             // If there is an error, do nothing.
             guard error == nil else {
                 // print("in healthStore.requestAuthorization.error: \(error.debugDescription))")

@@ -14,20 +14,25 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var heartRateTargetPicker: WKInterfacePicker!
 
     private let heartRateTargetItems: [WKPickerItem] = []
+    private var heartRateTargetValue: Int!
+    private let minimumHeartRateTarget = 20
+    private let maximumHeartRateTarget = 260
 
-    override func willActivate() {
-        super.willActivate()
-        initializeHeartRatePicker(picker: heartRateTargetPicker)
+    override func awake(withContext context: Any?) {
+        initializeHeartRatePicker(minimumHeartRateTarget: minimumHeartRateTarget, maximumHeartRateTarget: maximumHeartRateTarget, picker: heartRateTargetPicker)
     }
 
     @IBAction func didTapButton() {
         // pushController(withName: "HeartRateInterfaceController", context: nil)
     }
 
-    func initializeHeartRatePicker(picker: WKInterfacePicker) {
-        let minimumHeartRateTarget = 20
-        let maximumHeartRateTarget = 260
+    @IBAction func heartRateTargetActionPicker(_ value: Int) {
+        heartRateTargetValue = getTargetValueByIndexPicker(minimumHeartRateTarget: minimumHeartRateTarget, index: value)
+    }
+
+    func initializeHeartRatePicker(minimumHeartRateTarget: Int, maximumHeartRateTarget: Int, picker: WKInterfacePicker) {
         var pickerItems: [WKPickerItem] = []
+        let initialIndex = 35
 
         for heartRateTarget in minimumHeartRateTarget ... maximumHeartRateTarget {
             let heartRatePickerItem: WKPickerItem = WKPickerItem()
@@ -36,7 +41,21 @@ class InterfaceController: WKInterfaceController {
         }
 
         picker.setItems(pickerItems)
-        picker.setSelectedItemIndex(35)
+        picker.setSelectedItemIndex(initialIndex)
+        heartRateTargetValue = initialIndex + minimumHeartRateTarget
+    }
+
+    func getTargetValueByIndexPicker(minimumHeartRateTarget: Int, index: Int) -> Int {
+        return index + minimumHeartRateTarget
+    }
+
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
+        let segueData: [String : Any] = ["segue": "HeartRateInterfaceController",
+        "data": heartRateTargetValue]
+        if segueIdentifier == "HeartRateInterfaceController" {
+            return segueData
+        }
+        return segueData
     }
 
 }

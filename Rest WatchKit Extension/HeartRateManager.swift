@@ -93,7 +93,7 @@ class HeartRateManager {
         let count = sample.quantity.doubleValue(for: .beatsPerMinute())
 
         // Delegate new heart rate.
-        let newHeartRate = HeartRate(timestamp: timestamp, bpm: count)
+        let newHeartRate = HeartRate(timestamp: timestamp, bpm: Int(count))
         delegate?.heartRate(didChangeTo: newHeartRate)
     }
 

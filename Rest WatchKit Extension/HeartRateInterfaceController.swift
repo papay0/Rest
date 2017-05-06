@@ -13,37 +13,105 @@ class HeartRateInterfaceController: WKInterfaceController {
 
     @IBOutlet var controlButton: WKInterfaceButton!
     @IBOutlet var heartRateLabel: WKInterfaceLabel!
+    @IBOutlet var informationFromBpmLabel: WKInterfaceLabel!
+    @IBOutlet var informationToBpmLabel: WKInterfaceLabel!
+    @IBOutlet var informationInTimeLabel: WKInterfaceLabel!
+    @IBOutlet var informationTargetBpmLabel: WKInterfaceLabel!
+    @IBOutlet var messageLabel: WKInterfaceLabel!
 
     private let restSessionManager = RestSessionManager()
+    private var targetValue: Int = 55
+    private var timestampStart: Date = Date()
+    private var timestampEnd: Date = Date()
+    private var lastHeartRate: Int = -1
+    private var firstHeartRate: Int = -1
 
     override func awake(withContext context: Any?) {
-        print("in awake(withContext context)")
         restSessionManager.delegate = self
-        restSessionManager.start()
-        setTitle("Back")
+        initUI()
+        startRest()
+        // restSessionManager.start()
+        initData(context: context as? NSDictionary)
     }
-    
+
     override func willActivate() {
-        print("in willActivate")
         super.willActivate()
+    }
+
+    func initUI() {
+        setTitle("Back")
+        clearInformation()
+    }
+
+    func initData(context: NSDictionary?) {
+        guard let targetValueFromContext = context?["data"] as? Int else { return }
+        targetValue = targetValueFromContext
+    }
+
+    func clearInformation() {
+        heartRateLabel.setText("--")
+        informationFromBpmLabel.setText("")
+        informationToBpmLabel.setText("")
+        informationInTimeLabel.setText("")
+        informationTargetBpmLabel.setText("")
+        messageLabel.setText("")
+    }
+
+    func startRest() {
+        clearInformation()
+        restSessionManager.start()
+        timestampStart = Date()
+    }
+
+    func stopRest() {
+        restSessionManager.stop()
+        timestampEnd = Date()
+        displayInformationEndSession()
     }
 
     @IBAction func didTapButton() {
         switch restSessionManager.state {
         case .started:
             // Stop current rest session.
-            restSessionManager.stop()
-            // pushController(withName: "InterfaceController", context: nil)
+            stopRest()
             break
         case .stopped:
             // Start new rest session.
-            restSessionManager.start()
+            startRest()
             break
+        }
+    }
+
+    func displayInformationEndSession() {
+        if firstHeartRate == -1 {
+            informationFromBpmLabel.setText("Not enough data")
+            informationToBpmLabel.setText("I need more time...")
+        } else {
+            informationFromBpmLabel.setText("From: \(firstHeartRate) bpm")
+            informationToBpmLabel.setText("To: \(lastHeartRate) bpm")
+            informationInTimeLabel.setText("Time: \(timestampEnd.offset(from: timestampStart))")
+            informationTargetBpmLabel.setText("Target: \(targetValue) bpm")
+        }
+    }
+
+    func updateData(heartRate: Int) {
+        if firstHeartRate == -1 {
+            firstHeartRate = heartRate
+        }
+        lastHeartRate = heartRate
+        if heartRate <= targetValue {
+            success()
+            stopRest()
+            messageLabel.setText("Congratulations!")
         }
     }
 
     override func willDisappear() {
         restSessionManager.stop()
+    }
+
+    func success() {
+        WKInterfaceDevice.current().play(.success)
     }
 
 }
@@ -59,8 +127,8 @@ extension HeartRateInterfaceController: RestSessionManagerDelegate {
 
     func restSessionManager(_ manager: RestSessionManager, didChangeHeartRateTo newHeartRate: HeartRate) {
         // Update heart rate label.
-        print("new value: \(newHeartRate.bpm)")
-        let bpm = "\(String(format: "%.0f", newHeartRate.bpm)) bpm"
+        updateData(heartRate: newHeartRate.bpm)
+        let bpm = "\(newHeartRate.bpm) bpm"
         heartRateLabel.setText(bpm)
     }
 
