@@ -115,8 +115,8 @@ class HeartRateInterfaceController: WKInterfaceController {
 
     func success() {
         WKInterfaceDevice.current().play(.success)
-        stopRest()
         messageLabel.setText("Congratulations!")
+        stopRest()
     }
 
     func alreadyBelow() {
