@@ -1,16 +1,74 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--InterfaceController-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="InterfaceController" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Rest_WatchKit_Extension">
+                    <items>
+                        <label width="136" alignment="left" text="What is your heart rate target?" textAlignment="center" numberOfLines="0" id="fuy-4R-2jV"/>
+                        <picker height="64" alignment="center" verticalAlignment="center" focusStyle="stack" id="XC9-Ld-ril">
+                            <connections>
+                                <action selector="heartRateTargetActionPicker:" destination="AgC-eL-Hgc" id="3pU-SG-D1e"/>
+                            </connections>
+                        </picker>
+                        <button width="1" height="33" alignment="left" verticalAlignment="bottom" title="Start" id="HXE-hR-Q1g">
+                            <connections>
+                                <action selector="didTapButton" destination="AgC-eL-Hgc" id="e4y-hF-wlG"/>
+                                <segue destination="ng6-PL-eI5" kind="push" identifier="toHeartRateInterfaceController" id="O4M-8Z-RPo"/>
+                            </connections>
+                        </button>
+                        <separator alignment="left" verticalAlignment="bottom" id="p7E-hV-r4h">
+                            <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                        </separator>
+                    </items>
+                    <connections>
+                        <outlet property="heartRateTargetPicker" destination="XC9-Ld-ril" id="jlK-Nu-5d2"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="326"/>
+        </scene>
+        <!--HeartRateInterfaceController-->
+        <scene sceneID="7Fu-mT-Y8L">
+            <objects>
+                <controller identifier="HeartRateInterfaceController" id="ng6-PL-eI5" customClass="HeartRateInterfaceController" customModule="Rest_WatchKit_Extension">
+                    <items>
+                        <button width="1" height="31" alignment="left" verticalAlignment="bottom" title="Stop" id="5mD-GV-liS">
+                            <connections>
+                                <action selector="didTapButton" destination="ng6-PL-eI5" id="bqW-AX-WEm"/>
+                            </connections>
+                        </button>
+                        <separator alignment="left" verticalAlignment="bottom" id="K5Z-2J-DuR">
+                            <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </separator>
+                        <label width="136" alignment="center" text="--" textAlignment="center" id="ZDh-6h-vNy"/>
+                        <label width="136" alignment="left" text="Message" id="mDh-Vn-Gb3"/>
+                        <label width="136" height="20" alignment="left" text="From bpm" textAlignment="left" minimumScaleFactor="0.90000000000000002" id="i4p-pP-Cua"/>
+                        <label width="136" height="17" alignment="left" text="To bpm" textAlignment="left" id="R0s-ZB-jOE"/>
+                        <label width="136" height="17" alignment="left" text="In time" textAlignment="left" id="veL-F8-AIP"/>
+                        <label width="136" height="18" alignment="left" text="Target bpm" id="htb-tr-3mQ"/>
+                    </items>
+                    <connections>
+                        <outlet property="controlButton" destination="5mD-GV-liS" id="26K-5t-gQB"/>
+                        <outlet property="heartRateLabel" destination="ZDh-6h-vNy" id="RX2-yG-JTB"/>
+                        <outlet property="informationFromBpmLabel" destination="i4p-pP-Cua" id="t6m-bI-RJ3"/>
+                        <outlet property="informationInTimeLabel" destination="veL-F8-AIP" id="JCa-Pe-rHS"/>
+                        <outlet property="informationTargetBpmLabel" destination="htb-tr-3mQ" id="BXV-Mt-vll"/>
+                        <outlet property="informationToBpmLabel" destination="R0s-ZB-jOE" id="P1p-09-syd"/>
+                        <outlet property="messageLabel" destination="mDh-Vn-Gb3" id="qb4-LF-z5N"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="600" y="258.5"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -31,7 +89,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Rest_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>

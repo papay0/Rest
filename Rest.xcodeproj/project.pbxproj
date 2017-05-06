@@ -10,6 +10,15 @@
 		1065597149E2A34FB451E7AF /* Pods_Rest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95329037E12890D04B93E651 /* Pods_Rest.framework */; };
 		7096CE80F95739CFB7D9BAF0 /* Pods_Rest_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E1F6BC37377C93C21E2BC3B /* Pods_Rest_WatchKit_App.framework */; };
 		75A2B9AC211456171A26441D /* Pods_RestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746C46EE1F4514348E2162D1 /* Pods_RestUITests.framework */; };
+		92428AD31EBE29BF00250436 /* HeartRateInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92428AD21EBE29BF00250436 /* HeartRateInterfaceController.swift */; };
+		92428AD51EBE567F00250436 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92428AD41EBE567F00250436 /* Extensions.swift */; };
+		9253D6911EBE037A002B4AF6 /* HeartRateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D6901EBE037A002B4AF6 /* HeartRateManager.swift */; };
+		9253D6931EBE0394002B4AF6 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D6921EBE0394002B4AF6 /* HeartRate.swift */; };
+		9253D6951EBE03B3002B4AF6 /* AuthorizationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D6941EBE03B3002B4AF6 /* AuthorizationManger.swift */; };
+		9253D6971EBE0423002B4AF6 /* HKUnit+BeatsPerMinute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D6961EBE0423002B4AF6 /* HKUnit+BeatsPerMinute.swift */; };
+		9253D69A1EBE050C002B4AF6 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9253D6991EBE050C002B4AF6 /* HealthKit.framework */; };
+		9253D69D1EBE0559002B4AF6 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9253D69C1EBE0559002B4AF6 /* HealthKit.framework */; };
+		9253D69F1EBE06D5002B4AF6 /* RestSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D69E1EBE06D5002B4AF6 /* RestSessionManager.swift */; };
 		929E7DDD1EBDF9380040B0E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E7DDC1EBDF9380040B0E8 /* AppDelegate.swift */; };
 		929E7DDF1EBDF9380040B0E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E7DDE1EBDF9380040B0E8 /* ViewController.swift */; };
 		929E7DE21EBDF9380040B0E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 929E7DE01EBDF9380040B0E8 /* Main.storyboard */; };
@@ -99,6 +108,17 @@
 		6C4B23E4D3DBFC3F6BFEB455 /* Pods-Rest WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rest WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rest WatchKit Extension/Pods-Rest WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
 		6DB46E771336302492E8FF82 /* Pods-RestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RestTests/Pods-RestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		746C46EE1F4514348E2162D1 /* Pods_RestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92428AD21EBE29BF00250436 /* HeartRateInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateInterfaceController.swift; sourceTree = "<group>"; };
+		92428AD41EBE567F00250436 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9253D6901EBE037A002B4AF6 /* HeartRateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateManager.swift; sourceTree = "<group>"; };
+		9253D6921EBE0394002B4AF6 /* HeartRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
+		9253D6941EBE03B3002B4AF6 /* AuthorizationManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationManger.swift; sourceTree = "<group>"; };
+		9253D6961EBE0423002B4AF6 /* HKUnit+BeatsPerMinute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HKUnit+BeatsPerMinute.swift"; sourceTree = "<group>"; };
+		9253D6981EBE050C002B4AF6 /* Rest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rest.entitlements; sourceTree = "<group>"; };
+		9253D6991EBE050C002B4AF6 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		9253D69B1EBE0559002B4AF6 /* Rest WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Rest WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		9253D69C1EBE0559002B4AF6 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		9253D69E1EBE06D5002B4AF6 /* RestSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestSessionManager.swift; sourceTree = "<group>"; };
 		929E7DD91EBDF9380040B0E8 /* Rest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		929E7DDC1EBDF9380040B0E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		929E7DDE1EBDF9380040B0E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1065597149E2A34FB451E7AF /* Pods_Rest.framework in Frameworks */,
+				9253D69A1EBE050C002B4AF6 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0AE868A39FC2FBBADC8269E /* Pods_Rest_WatchKit_Extension.framework in Frameworks */,
+				9253D69D1EBE0559002B4AF6 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +241,7 @@
 		929E7DDB1EBDF9380040B0E8 /* Rest */ = {
 			isa = PBXGroup;
 			children = (
+				9253D6981EBE050C002B4AF6 /* Rest.entitlements */,
 				929E7DDC1EBDF9380040B0E8 /* AppDelegate.swift */,
 				929E7DDE1EBDF9380040B0E8 /* ViewController.swift */,
 				929E7DE01EBDF9380040B0E8 /* Main.storyboard */,
@@ -260,8 +283,16 @@
 		929E7E141EBDF9380040B0E8 /* Rest WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9253D69B1EBE0559002B4AF6 /* Rest WatchKit Extension.entitlements */,
 				929E7E171EBDF9380040B0E8 /* InterfaceController.swift */,
+				92428AD21EBE29BF00250436 /* HeartRateInterfaceController.swift */,
 				929E7E191EBDF9380040B0E8 /* ExtensionDelegate.swift */,
+				9253D6901EBE037A002B4AF6 /* HeartRateManager.swift */,
+				92428AD41EBE567F00250436 /* Extensions.swift */,
+				9253D69E1EBE06D5002B4AF6 /* RestSessionManager.swift */,
+				9253D6941EBE03B3002B4AF6 /* AuthorizationManger.swift */,
+				9253D6921EBE0394002B4AF6 /* HeartRate.swift */,
+				9253D6961EBE0423002B4AF6 /* HKUnit+BeatsPerMinute.swift */,
 				929E7E1B1EBDF9380040B0E8 /* NotificationController.swift */,
 				929E7E1D1EBDF9380040B0E8 /* ComplicationController.swift */,
 				929E7E1F1EBDF9380040B0E8 /* Assets.xcassets */,
@@ -282,6 +313,8 @@
 		DE5790FCE0362BF9BECE710F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9253D69C1EBE0559002B4AF6 /* HealthKit.framework */,
+				9253D6991EBE050C002B4AF6 /* HealthKit.framework */,
 				95329037E12890D04B93E651 /* Pods_Rest.framework */,
 				5E1F6BC37377C93C21E2BC3B /* Pods_Rest_WatchKit_App.framework */,
 				5335ADE105E26AC9FCDE2DF2 /* Pods_Rest_WatchKit_Extension.framework */,
@@ -413,6 +446,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = Q4B996RU7K;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					929E7DEC1EBDF9380040B0E8 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -435,6 +473,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = Q4B996RU7K;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit.watchos = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -762,8 +805,15 @@
 			files = (
 				929E7E1C1EBDF9380040B0E8 /* NotificationController.swift in Sources */,
 				929E7E1E1EBDF9380040B0E8 /* ComplicationController.swift in Sources */,
+				92428AD31EBE29BF00250436 /* HeartRateInterfaceController.swift in Sources */,
 				929E7E1A1EBDF9380040B0E8 /* ExtensionDelegate.swift in Sources */,
 				929E7E181EBDF9380040B0E8 /* InterfaceController.swift in Sources */,
+				9253D6971EBE0423002B4AF6 /* HKUnit+BeatsPerMinute.swift in Sources */,
+				9253D6951EBE03B3002B4AF6 /* AuthorizationManger.swift in Sources */,
+				9253D6931EBE0394002B4AF6 /* HeartRate.swift in Sources */,
+				9253D6911EBE037A002B4AF6 /* HeartRateManager.swift in Sources */,
+				92428AD51EBE567F00250436 /* Extensions.swift in Sources */,
+				9253D69F1EBE06D5002B4AF6 /* RestSessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +970,7 @@
 			baseConfigurationReference = 2CDF913B2C1C1814E13053F6 /* Pods-Rest WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Rest WatchKit Extension/Rest WatchKit Extension.entitlements";
 				DEVELOPMENT_TEAM = Q4B996RU7K;
 				INFOPLIST_FILE = "Rest WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -938,6 +989,7 @@
 			baseConfigurationReference = 6C4B23E4D3DBFC3F6BFEB455 /* Pods-Rest WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Rest WatchKit Extension/Rest WatchKit Extension.entitlements";
 				DEVELOPMENT_TEAM = Q4B996RU7K;
 				INFOPLIST_FILE = "Rest WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -994,6 +1046,7 @@
 			baseConfigurationReference = 24CD24746F2B734A812A0096 /* Pods-Rest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Rest/Rest.entitlements;
 				DEVELOPMENT_TEAM = Q4B996RU7K;
 				INFOPLIST_FILE = Rest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1008,6 +1061,7 @@
 			baseConfigurationReference = 0FC182DEF8828F4DF45C7E9F /* Pods-Rest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Rest/Rest.entitlements;
 				DEVELOPMENT_TEAM = Q4B996RU7K;
 				INFOPLIST_FILE = Rest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

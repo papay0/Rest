@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private let healthStore = HKHealthStore()
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
+    }
+
+    func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
+        // Authorize access to health data for watch.
+        healthStore.handleAuthorizationForExtension { success, error in
+            print("healthStore.handleAuthorizationForExtension.success ", success)
+            print("healthStore.handleAuthorizationForExtension.error ", error as Any)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

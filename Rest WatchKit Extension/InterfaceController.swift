@@ -11,20 +11,51 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet var heartRateTargetPicker: WKInterfacePicker!
+
+    private let heartRateTargetItems: [WKPickerItem] = []
+    private var heartRateTargetValue: Int!
+    private let minimumHeartRateTarget = 20
+    private let maximumHeartRateTarget = 260
+
     override func awake(withContext context: Any?) {
-        super.awake(withContext: context)
-
-        // Configure interface objects here.
+        initializeHeartRatePicker(minimumHeartRateTarget: minimumHeartRateTarget, maximumHeartRateTarget: maximumHeartRateTarget, picker: heartRateTargetPicker)
     }
 
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
+    @IBAction func didTapButton() {
+        // pushController(withName: "HeartRateInterfaceController", context: nil)
     }
 
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+    @IBAction func heartRateTargetActionPicker(_ value: Int) {
+        heartRateTargetValue = getTargetValueByIndexPicker(minimumHeartRateTarget: minimumHeartRateTarget, index: value)
+    }
+
+    func initializeHeartRatePicker(minimumHeartRateTarget: Int, maximumHeartRateTarget: Int, picker: WKInterfacePicker) {
+        var pickerItems: [WKPickerItem] = []
+        let initialIndex = 35
+
+        for heartRateTarget in minimumHeartRateTarget ... maximumHeartRateTarget {
+            let heartRatePickerItem: WKPickerItem = WKPickerItem()
+            heartRatePickerItem.title = "\(heartRateTarget) bpm"
+            pickerItems.append(heartRatePickerItem)
+        }
+
+        picker.setItems(pickerItems)
+        picker.setSelectedItemIndex(initialIndex)
+        heartRateTargetValue = initialIndex + minimumHeartRateTarget
+    }
+
+    func getTargetValueByIndexPicker(minimumHeartRateTarget: Int, index: Int) -> Int {
+        return index + minimumHeartRateTarget
+    }
+
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
+        let segueData: [String : Any] = ["segue": "HeartRateInterfaceController",
+        "data": heartRateTargetValue]
+        if segueIdentifier == "HeartRateInterfaceController" {
+            return segueData
+        }
+        return segueData
     }
 
 }
