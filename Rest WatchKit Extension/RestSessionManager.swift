@@ -59,6 +59,7 @@ class RestSessionManager: NSObject {
     // MARK: - Public API
 
     func start() {
+        print("start rest session")
         // If we have already started the workout, then do nothing.
         if session != nil {
             // Another workout is running.
@@ -87,6 +88,7 @@ class RestSessionManager: NSObject {
     }
 
     func stop() {
+        print("stop rest session")
         // If we have already stopped the workout, then do nothing.
         if session == nil {
             return

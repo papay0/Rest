@@ -16,23 +16,34 @@ class HeartRateInterfaceController: WKInterfaceController {
 
     private let restSessionManager = RestSessionManager()
 
-    override func willActivate() {
-        super.willActivate()
+    override func awake(withContext context: Any?) {
+        print("in awake(withContext context)")
         restSessionManager.delegate = self
         restSessionManager.start()
+        setTitle("Back")
+    }
+    
+    override func willActivate() {
+        print("in willActivate")
+        super.willActivate()
     }
 
     @IBAction func didTapButton() {
         switch restSessionManager.state {
         case .started:
-            // Stop current workout.
+            // Stop current rest session.
             restSessionManager.stop()
+            // pushController(withName: "InterfaceController", context: nil)
             break
         case .stopped:
-            // Start new workout.
+            // Start new rest session.
             restSessionManager.start()
             break
         }
+    }
+
+    override func willDisappear() {
+        restSessionManager.stop()
     }
 
 }
@@ -49,7 +60,8 @@ extension HeartRateInterfaceController: RestSessionManagerDelegate {
     func restSessionManager(_ manager: RestSessionManager, didChangeHeartRateTo newHeartRate: HeartRate) {
         // Update heart rate label.
         print("new value: \(newHeartRate.bpm)")
-        heartRateLabel.setText(String(format: "%.0f", newHeartRate.bpm))
+        let bpm = "\(String(format: "%.0f", newHeartRate.bpm)) bpm"
+        heartRateLabel.setText(bpm)
     }
 
 }

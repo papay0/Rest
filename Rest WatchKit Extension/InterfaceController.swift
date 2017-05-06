@@ -20,6 +20,10 @@ class InterfaceController: WKInterfaceController {
         initializeHeartRatePicker(picker: heartRateTargetPicker)
     }
 
+    @IBAction func didTapButton() {
+        // pushController(withName: "HeartRateInterfaceController", context: nil)
+    }
+
     func initializeHeartRatePicker(picker: WKInterfacePicker) {
         let minimumHeartRateTarget = 20
         let maximumHeartRateTarget = 260

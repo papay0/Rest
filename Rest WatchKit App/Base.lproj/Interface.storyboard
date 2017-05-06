@@ -9,16 +9,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--InterfaceController-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Rest_WatchKit_App" customModuleProvider="target">
+                <controller identifier="InterfaceController" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Rest_WatchKit_Extension">
                     <items>
                         <label width="136" alignment="left" text="What is your heart rate target?" textAlignment="center" numberOfLines="0" id="fuy-4R-2jV"/>
-                        <picker height="64" alignment="center" verticalAlignment="center" focusStyle="stack" indicatorMode="shownWhileFocused" enabled="NO" id="XC9-Ld-ril"/>
+                        <picker height="64" alignment="center" verticalAlignment="center" focusStyle="stack" id="XC9-Ld-ril"/>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Start" id="HXE-hR-Q1g">
                             <connections>
-                                <segue destination="ng6-PL-eI5" kind="push" id="06d-jQ-cwx"/>
+                                <action selector="didTapButton" destination="AgC-eL-Hgc" id="e4y-hF-wlG"/>
+                                <segue destination="ng6-PL-eI5" kind="push" id="O4M-8Z-RPo"/>
                             </connections>
                         </button>
                         <separator alignment="left" verticalAlignment="bottom" id="p7E-hV-r4h">
@@ -32,15 +33,14 @@
             </objects>
             <point key="canvasLocation" x="220" y="328"/>
         </scene>
-        <!--Heart Rate Interface Controller-->
+        <!--HeartRateInterfaceController-->
         <scene sceneID="7Fu-mT-Y8L">
             <objects>
-                <controller id="ng6-PL-eI5" customClass="HeartRateInterfaceController" customModule="Rest_WatchKit_Extension">
+                <controller identifier="HeartRateInterfaceController" id="ng6-PL-eI5" customClass="HeartRateInterfaceController" customModule="Rest_WatchKit_Extension">
                     <items>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Stop" id="5mD-GV-liS">
                             <connections>
                                 <action selector="didTapButton" destination="ng6-PL-eI5" id="bqW-AX-WEm"/>
-                                <segue destination="AgC-eL-Hgc" kind="push" id="naf-HB-f7e"/>
                             </connections>
                         </button>
                         <separator alignment="left" verticalAlignment="bottom" id="K5Z-2J-DuR">
@@ -54,7 +54,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="473" y="324"/>
+            <point key="canvasLocation" x="600" y="262"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
