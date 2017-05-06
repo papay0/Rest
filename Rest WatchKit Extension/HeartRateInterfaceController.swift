@@ -49,6 +49,8 @@ class HeartRateInterfaceController: WKInterfaceController {
     }
 
     func clearInformation() {
+        firstHeartRate = -1
+        lastHeartRate = -1
         heartRateLabel.setText("--")
         informationFromBpmLabel.setText("")
         informationToBpmLabel.setText("")
@@ -95,14 +97,15 @@ class HeartRateInterfaceController: WKInterfaceController {
     }
 
     func updateData(heartRate: Int) {
+        lastHeartRate = heartRate
+        if firstHeartRate != -1 && heartRate <= targetValue {
+            success()
+        }
         if firstHeartRate == -1 {
             firstHeartRate = heartRate
-        }
-        lastHeartRate = heartRate
-        if heartRate <= targetValue {
-            success()
-            stopRest()
-            messageLabel.setText("Congratulations!")
+            if heartRate <= targetValue {
+                alreadyBelow()
+            }
         }
     }
 
@@ -112,6 +115,14 @@ class HeartRateInterfaceController: WKInterfaceController {
 
     func success() {
         WKInterfaceDevice.current().play(.success)
+        stopRest()
+        messageLabel.setText("Congratulations!")
+    }
+
+    func alreadyBelow() {
+        WKInterfaceDevice.current().play(.retry)
+        messageLabel.setText("Already below... 🤓")
+        stopRest()
     }
 
 }
