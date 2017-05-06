@@ -60,7 +60,6 @@ class RestSessionManager: NSObject {
 
     func start() {
         // If we have already started the workout, then do nothing.
-        print("in start()")
         if session != nil {
             // Another workout is running.
             return

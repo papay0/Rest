@@ -11,59 +11,28 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
-    @IBOutlet var heartRateLabel: WKInterfaceLabel!
-    @IBOutlet var controlButton: WKInterfaceButton!
+    @IBOutlet var heartRateTargetPicker: WKInterfacePicker!
 
-    private let restSessionManager = RestSessionManager()
-
-    override func awake(withContext context: Any?) {
-        super.awake(withContext: context)
-
-        // Configure interface objects here.
-    }
-
-    private let heartRateManager = HeartRateManager()
+    private let heartRateTargetItems: [WKPickerItem] = []
 
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        restSessionManager.delegate = self
+        initializeHeartRatePicker(picker: heartRateTargetPicker)
     }
 
-    // MARK: - Actions
+    func initializeHeartRatePicker(picker: WKInterfacePicker) {
+        let minimumHeartRateTarget = 20
+        let maximumHeartRateTarget = 260
+        var pickerItems: [WKPickerItem] = []
 
-    @IBAction func didTapButton() {
-        switch restSessionManager.state {
-        case .started:
-            // Stop current workout.
-            restSessionManager.stop()
-            break
-        case .stopped:
-            // Start new workout.
-            restSessionManager.start()
-            break
+        for heartRateTarget in minimumHeartRateTarget ... maximumHeartRateTarget {
+            let heartRatePickerItem: WKPickerItem = WKPickerItem()
+            heartRatePickerItem.title = "\(heartRateTarget) bpm"
+            pickerItems.append(heartRatePickerItem)
         }
-    }
 
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
-
-}
-
-// MARK: - Rest Session Manager Delegate
-
-extension InterfaceController: RestSessionManagerDelegate {
-
-    func restSessionManager(_ manager: RestSessionManager, didChangeStateTo newState: RestSessionState) {
-        // Update title of control button.
-        controlButton.setTitle(newState.actionText())
-    }
-
-    func restSessionManager(_ manager: RestSessionManager, didChangeHeartRateTo newHeartRate: HeartRate) {
-        // Update heart rate label.
-        heartRateLabel.setText(String(format: "%.0f", newHeartRate.bpm))
+        picker.setItems(pickerItems)
+        picker.setSelectedItemIndex(35)
     }
 
 }

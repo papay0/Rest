@@ -14,21 +14,47 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Rest_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label width="136" alignment="left" text="You need to rest... 😴" numberOfLines="0" id="fuy-4R-2jV"/>
-                        <label alignment="left" text="--" id="vak-Bu-RfS"/>
-                        <button width="1" alignment="left" title="Start" id="HXE-hR-Q1g">
+                        <label width="136" alignment="left" text="What is your heart rate target?" textAlignment="center" numberOfLines="0" id="fuy-4R-2jV"/>
+                        <picker height="64" alignment="center" verticalAlignment="center" focusStyle="stack" indicatorMode="shownWhileFocused" enabled="NO" id="XC9-Ld-ril"/>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Start" id="HXE-hR-Q1g">
                             <connections>
-                                <action selector="didTapButton" destination="AgC-eL-Hgc" id="dHo-qt-je8"/>
+                                <segue destination="ng6-PL-eI5" kind="push" id="06d-jQ-cwx"/>
                             </connections>
                         </button>
+                        <separator alignment="left" verticalAlignment="bottom" id="p7E-hV-r4h">
+                            <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                        </separator>
                     </items>
                     <connections>
-                        <outlet property="controlButton" destination="HXE-hR-Q1g" id="r3A-Wr-3oB"/>
-                        <outlet property="heartRateLabel" destination="vak-Bu-RfS" id="U2g-2V-MOC"/>
+                        <outlet property="heartRateTargetPicker" destination="XC9-Ld-ril" id="jlK-Nu-5d2"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="328"/>
+        </scene>
+        <!--Heart Rate Interface Controller-->
+        <scene sceneID="7Fu-mT-Y8L">
+            <objects>
+                <controller id="ng6-PL-eI5" customClass="HeartRateInterfaceController" customModule="Rest_WatchKit_Extension">
+                    <items>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Stop" id="5mD-GV-liS">
+                            <connections>
+                                <action selector="didTapButton" destination="ng6-PL-eI5" id="bqW-AX-WEm"/>
+                                <segue destination="AgC-eL-Hgc" kind="push" id="naf-HB-f7e"/>
+                            </connections>
+                        </button>
+                        <separator alignment="left" verticalAlignment="bottom" id="K5Z-2J-DuR">
+                            <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </separator>
+                        <label width="136" alignment="center" text="--" textAlignment="center" id="ZDh-6h-vNy"/>
+                    </items>
+                    <connections>
+                        <outlet property="controlButton" destination="5mD-GV-liS" id="26K-5t-gQB"/>
+                        <outlet property="heartRateLabel" destination="ZDh-6h-vNy" id="RX2-yG-JTB"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="473" y="324"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

@@ -3,7 +3,7 @@
 //  Rest
 //
 //  Created by Arthur Papailhau on 5/6/17.
-//  Copyright © 2017 Arthur Papailhau. All rights reserved.
+//  Copyright © 2017 Arthur Papailhau. All rights reserved. Special thanks to Thomas Paul Mann.
 //
 
 import HealthKit
@@ -30,7 +30,6 @@ class HeartRateManager {
 
     init() {
         // Request authorization to read heart rate data.
-        print("will requestAuthorization")
         AuthorizationManager.requestAuthorization { (success) in
             print("AuthorizationManager.requestAuthorization.success?: \(success)")
         }
@@ -39,7 +38,6 @@ class HeartRateManager {
     // MARK: - Public API
 
     func start() {
-        print("in start()")
         // Configure heart rate quantity type.
         guard let quantityType = HKObjectType.quantityType(forIdentifier: .heartRate) else { return }
 
@@ -67,7 +65,6 @@ class HeartRateManager {
     }
 
     func stop() {
-        print("in stop()")
         // Stop all active queries.
         activeQueries.forEach { healthStore.stop($0) }
         activeQueries.removeAll()
